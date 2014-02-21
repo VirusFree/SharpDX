@@ -424,6 +424,52 @@ namespace SharpDX
         }
 
         /// <summary>
+        /// Perform a component-wise Modulo
+        /// </summary>
+        /// <param name="dividend">The dividend vector.</param>
+        /// <param name="divisor">The divisor vector.</param>
+        /// <returns>The component-wise modulo of the two vectors.</returns>
+        public static Vector2 Modulo(Vector2 dividend, Vector2 divisor)
+        {
+            return new Vector2(dividend.X % divisor.X, dividend.Y % divisor.Y);
+        }
+
+        /// <summary>
+        /// Perform a component-wise Modulo
+        /// </summary>
+        /// <param name="dividend">The dividend vector.</param>
+        /// <param name="divisor">The divisor vector.</param>
+        /// <param name="result">The component-wise modulo of the two vectors.</param>
+        public static void Modulo(ref Vector2 dividend, ref Vector2 divisor, out Vector2 result)
+        {
+            result.X = dividend.X % divisor.X;
+            result.Y = dividend.Y % divisor.Y;
+        }
+
+        /// <summary>
+        /// Perform a component-wise Modulo
+        /// </summary>
+        /// <param name="dividend">The dividend vector.</param>
+        /// <param name="divisor">The divisor scalar.</param>
+        /// <returns>The component-wise modulo of the two vectors.</returns>
+        public static Vector2 Modulo(Vector2 dividend, float divisor)
+        {
+            return new Vector2(dividend.X % divisor, dividend.Y % divisor);
+        }
+
+        /// <summary>
+        /// Perform a component-wise Modulo
+        /// </summary>
+        /// <param name="dividend">The dividend vector.</param>
+        /// <param name="divisor">The divisor scalar.</param>
+        /// <param name="result">The component-wise modulo of the two vectors.</param>
+        public static void Modulo(ref Vector2 dividend, float divisor, out Vector2 result)
+        {
+            result.X = dividend.X % divisor;
+            result.Y = dividend.Y % divisor;
+        }
+
+        /// <summary>
         /// Reverses the direction of a given vector.
         /// </summary>
         /// <param name="value">The vector to negate.</param>
@@ -1329,6 +1375,28 @@ namespace SharpDX
         }
 
         /// <summary>
+        /// Perform a component-wise Modulo
+        /// </summary>
+        /// <param name="dividend">The dividend vector.</param>
+        /// <param name="divisor">The divisor vector.</param>
+        /// <returns>The component-wise modulo of the two vectors.</returns>
+        public static Vector2 operator %(Vector2 dividend, Vector2 divisor)
+        {
+            return new Vector2(dividend.X % divisor.X, dividend.Y % divisor.Y);
+        }
+
+        /// <summary>
+        /// Perform a component-wise Modulo
+        /// </summary>
+        /// <param name="dividend">The dividend vector.</param>
+        /// <param name="divisor">The divisor scalar.</param>
+        /// <returns>The component-wise modulo of the two vectors.</returns>
+        public static Vector2 operator %(Vector2 dividend, float divisor)
+        {
+            return new Vector2(dividend.X % divisor, dividend.Y % divisor);
+        }
+
+        /// <summary>
         /// Perform a component-wise addition
         /// </summary>
         /// <param name="value">The input vector.</param>
@@ -1581,5 +1649,7 @@ namespace SharpDX
             return new Vector2(value.X, value.Y);
         }
 #endif
+
+        public static float divisor { get; set; }
     }
 }
