@@ -57,6 +57,9 @@ namespace SharpDX
     /// internal representation.
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
+#if !W8CORE
+    [Serializable]
+#endif
     public struct AngleSingle : IComparable, IComparable<AngleSingle>, IEquatable<AngleSingle>, IFormattable, IDataSerializable
     {
         /// <summary>

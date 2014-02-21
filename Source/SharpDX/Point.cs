@@ -27,6 +27,9 @@ namespace SharpDX
     /// <summary>
     /// Structure using the same layout than <see cref="System.Drawing.Point"/>.
     /// </summary>
+#if !W8CORE
+    [Serializable]
+#endif
     [StructLayout(LayoutKind.Sequential)]
     public struct Point : IEquatable<Point>, IDataSerializable
     {

@@ -27,6 +27,9 @@ namespace SharpDX
     /// <summary>
     /// A boolean value stored on 4 bytes (instead of 1 in .NET).
     /// </summary>
+#if !W8CORE
+    [Serializable]
+#endif
     [StructLayout(LayoutKind.Sequential, Size = 4)]
     [DynamicSerializer("TKB1")]
     public struct Bool : IEquatable<Bool>, IDataSerializable

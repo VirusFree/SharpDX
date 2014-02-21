@@ -1,4 +1,4 @@
-// Copyright (c) 2010-2014 SharpDX - Alexandre Mutel
+// Copyright (c) 2010-2013 SharpDX - Alexandre Mutel
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -17,54 +17,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-
-using System;
-using System.Runtime.InteropServices;
-
-namespace SharpDX
+namespace SharpDX.Design
 {
     /// <summary>
-    /// Frustum camera parameters.
+    /// The <see cref="SharpDX.Design"/> namespace contains design-time converters for all vectors structures.
     /// </summary>
-#if !W8CORE
-    [Serializable]
-#endif
-    [StructLayout(LayoutKind.Sequential, Pack = 4)]
-    public struct FrustumCameraParams
+    [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    class NamespaceDoc
     {
-        /// <summary>
-        /// Position of the camera.
-        /// </summary>
-        public Vector3 Position;
-
-        /// <summary>
-        /// Looking at direction of the camera.
-        /// </summary>
-        public Vector3 LookAtDir;
-
-        /// <summary>
-        /// Up direction.
-        /// </summary>
-        public Vector3 UpDir;
-
-        /// <summary>
-        /// Field of view.
-        /// </summary>
-        public float FOV;
-
-        /// <summary>
-        /// Z near distance.
-        /// </summary>
-        public float ZNear;
-
-        /// <summary>
-        /// Z far distance.
-        /// </summary>
-        public float ZFar;
-
-        /// <summary>
-        /// Aspect ratio.
-        /// </summary>
-        public float AspectRatio;
     }
 }

@@ -28,6 +28,9 @@ namespace SharpDX
     /// <summary>
     /// Direct2D Matrix3x2. Supports implicit cast from <see cref="SharpDX.Matrix"/>.
     /// </summary>
+#if !W8CORE
+    [Serializable]
+#endif
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     public struct Matrix3x2 : IDataSerializable
     {
