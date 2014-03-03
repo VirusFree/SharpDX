@@ -734,6 +734,17 @@ namespace SharpDX
         /// <summary>
         /// Calculates the dot product of two vectors.
         /// </summary>
+        /// <param name="left">First source vector</param>
+        /// <param name="right">Second source vector.</param>
+        /// <returns>The dot product of the two vectors.</returns>
+        public static float Dot(ref Vector4 left, ref Vector4 right)
+        {
+            return (left.X * right.X) + (left.Y * right.Y) + (left.Z * right.Z) + (left.W * right.W);
+        }
+
+        /// <summary>
+        /// Calculates the dot product of two vectors.
+        /// </summary>
         /// <param name="left">First source vector.</param>
         /// <param name="right">Second source vector.</param>
         /// <returns>The dot product of the two vectors.</returns>
