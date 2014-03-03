@@ -661,6 +661,26 @@ namespace SharpDX
         /// <param name="value2">The second vector.</param>
         /// <returns>The distance between the two vectors.</returns>
         /// <remarks>
+        /// <see cref="SharpDX.Vector4.DistanceSquared(ref Vector4, ref Vector4, out float)"/> may be preferred when only the relative distance is needed
+        /// and speed is of the essence.
+        /// </remarks>
+        public static float Distance(ref Vector4 value1, ref Vector4 value2)
+        {
+            float x = value1.X - value2.X;
+            float y = value1.Y - value2.Y;
+            float z = value1.Z - value2.Z;
+            float w = value1.W - value2.W;
+
+            return (float)Math.Sqrt((x * x) + (y * y) + (z * z) + (w * w));
+        }
+
+        /// <summary>
+        /// Calculates the distance between two vectors.
+        /// </summary>
+        /// <param name="value1">The first vector.</param>
+        /// <param name="value2">The second vector.</param>
+        /// <returns>The distance between the two vectors.</returns>
+        /// <remarks>
         /// <see cref="SharpDX.Vector4.DistanceSquared(Vector4, Vector4)"/> may be preferred when only the relative distance is needed
         /// and speed is of the essence.
         /// </remarks>
