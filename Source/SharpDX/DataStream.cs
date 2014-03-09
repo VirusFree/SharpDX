@@ -266,6 +266,30 @@ namespace SharpDX
         }
 
         /// <summary>
+        ///   Reads a single value from the current stream and advances the current
+        ///   position within this stream by the number of bytes read.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <typeparam name = "T">The type of the value to be read from the stream.</typeparam>
+        /// <param name="result">The value to read data into.</param>
+        /// <exception cref = "T:System.NotSupportedException">This stream does not support reading.</exception>
+        public void Read<T>(out T result) where T : struct
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                result = default(T);
+                byte* from = _buffer + _position;
+                _position = (byte*)Utilities.ReadAndPosition((IntPtr)from, ref result) - _buffer;
+            }
+        }
+
+        /// <summary>
         /// Reads a float.
         /// </summary>
         /// <remarks>
@@ -287,7 +311,7 @@ namespace SharpDX
         }
 
         /// <summary>
-        /// Reads a int.
+        /// Reads an int.
         /// </summary>
         /// <remarks>
         /// In order to provide faster read/write, this operation doesn't check stream bound. 
@@ -308,13 +332,34 @@ namespace SharpDX
         }
 
         /// <summary>
+        /// Reads a uint.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <returns>a uint from the stream</returns>
+        public uint ReadUInt()
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                uint value = *((uint*)(_buffer + _position));
+                _position += 4;
+                return value;
+            }
+        }
+
+        /// <summary>
         /// Reads a short.
         /// </summary>
         /// <remarks>
         /// In order to provide faster read/write, this operation doesn't check stream bound. 
         /// A client must carefully not read/write above the size of this datastream.
         /// </remarks>
-        /// <returns>an short from the stream</returns>
+        /// <returns>a short from the stream</returns>
         public short ReadShort()
         {
             unsafe
@@ -323,6 +368,27 @@ namespace SharpDX
                     throw new NotSupportedException();
 
                 short value = *((short*)(_buffer + _position));
+                _position += 2;
+                return value;
+            }
+        }
+
+        /// <summary>
+        /// Reads a ushort.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <returns>a ushort from the stream</returns>
+        public ushort ReadUShort()
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                ushort value = *((ushort*)(_buffer + _position));
                 _position += 2;
                 return value;
             }
@@ -371,6 +437,26 @@ namespace SharpDX
         }
 
         /// <summary>
+        /// Reads a Vector2.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="result">The value to read data into.</param>
+        public void ReadVector2(out Vector2 result)
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                result = *((Vector2*)(_buffer + _position));
+                _position += 4 * 2;
+            }
+        }
+
+        /// <summary>
         /// Reads a Vector3.
         /// </summary>
         /// <remarks>
@@ -392,6 +478,26 @@ namespace SharpDX
         }
 
         /// <summary>
+        /// Reads a Vector3.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="result">The value to read data into.</param>
+        public void ReadVector3(out Vector3 result)
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                result = *((Vector3*)(_buffer + _position));
+                _position += 4 * 3;
+            }
+        }
+
+        /// <summary>
         /// Reads a Vector4.
         /// </summary>
         /// <remarks>
@@ -409,6 +515,26 @@ namespace SharpDX
                 Vector4 value = *((Vector4*)(_buffer + _position));
                 _position += 4 * 4;
                 return value;
+            }
+        }
+
+        /// <summary>
+        /// Reads a Vector4.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="result">The value to read data into.</param>
+        public void ReadVector4(out Vector4 result)
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                result = *((Vector4*)(_buffer + _position));
+                _position += 4 * 4;
             }
         }
 
@@ -497,6 +623,26 @@ namespace SharpDX
         }
 
         /// <summary>
+        /// Reads a Half2.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="result">The value to read data into.</param>
+        public void ReadHalf2(out Half2 result)
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                result = *((Half2*)(_buffer + _position));
+                _position += 2 * 2;
+            }
+        }
+
+        /// <summary>
         /// Reads a Half3.
         /// </summary>
         /// <remarks>
@@ -514,6 +660,26 @@ namespace SharpDX
                 Half3 value = *((Half3*)(_buffer + _position));
                 _position += 2 * 3;
                 return value;
+            }
+        }
+
+        /// <summary>
+        /// Reads a Half3.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="result">The value to read data into.</param>
+        public void ReadHalf3(out Half3 result)
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                result = *((Half3*)(_buffer + _position));
+                _position += 2 * 3;
             }
         }
 
@@ -539,6 +705,26 @@ namespace SharpDX
         }
 
         /// <summary>
+        /// Reads a Half4.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="result">The value to read data into.</param>
+        public void ReadHalf4(out Half4 result)
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                result = *((Half4*)(_buffer + _position));
+                _position += 2 * 4;
+            }
+        }
+
+        /// <summary>
         /// Reads a Matrix.
         /// </summary>
         /// <remarks>
@@ -560,6 +746,26 @@ namespace SharpDX
         }
 
         /// <summary>
+        /// Reads a Matrix.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="result">The value to read data into.</param>
+        public void ReadMatrix(out Matrix result)
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                result = *((Matrix*)(_buffer + _position));
+                _position += 4 * 4 * 4;
+            }
+        }
+
+        /// <summary>
         /// Reads a Quaternion.
         /// </summary>
         /// <remarks>
@@ -577,6 +783,26 @@ namespace SharpDX
                 Quaternion value = *((Quaternion*)(_buffer + _position));
                 _position += 4 * 4;
                 return value;
+            }
+        }
+
+        /// <summary>
+        /// Reads a Quaternion.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="result">The value to read data into.</param>
+        public void ReadQuaternion(out Quaternion result)
+        {
+            unsafe
+            {
+                if (!_canRead)
+                    throw new NotSupportedException();
+
+                result = *((Quaternion*)(_buffer + _position));
+                _position += 4 * 4;
             }
         }
 
@@ -739,6 +965,46 @@ namespace SharpDX
         }
 
         /// <summary>
+        ///   Writes a single value to the stream, and advances the current position
+        ///   within this stream by the number of bytes written.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <typeparam name = "T">The type of the value to be written to the stream.</typeparam>
+        /// <param name = "value">The value to write to the stream.</param>
+        /// <exception cref = "T:System.NotSupportedException">The stream does not support writing.</exception>
+        public void Write<T>(ref T value) where T : struct
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                _position = (byte*)Utilities.WriteAndPosition((IntPtr)(_buffer + _position), ref value) - _buffer;
+            }
+        }
+        
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
+        public void Write(byte value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((byte*)(_buffer + _position)) = value;
+                _position++;
+            }
+        }
+
+        /// <summary>
         /// Writes the specified value.
         /// </summary>
         /// <remarks>
@@ -784,6 +1050,25 @@ namespace SharpDX
         /// A client must carefully not read/write above the size of this datastream.
         /// </remarks>
         /// <param name="value">The value.</param>
+        public void Write(uint value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((uint*)(_buffer + _position)) = value;
+                _position += 4;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
         public void Write(short value)
         {
             if (!_canWrite)
@@ -791,6 +1076,25 @@ namespace SharpDX
             unsafe
             {
                 *((short*)(_buffer + _position)) = value;
+                _position += 2;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
+        public void Write(ushort value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((ushort*)(_buffer + _position)) = value;
                 _position += 2;
             }
         }
@@ -841,7 +1145,45 @@ namespace SharpDX
         /// A client must carefully not read/write above the size of this datastream.
         /// </remarks>
         /// <param name="value">The value.</param>
+        public void Write(ref Vector2 value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Vector2*)(_buffer + _position)) = value;
+                _position += 4 * 2;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
         public void Write(Vector3 value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Vector3*)(_buffer + _position)) = value;
+                _position += 4 * 3;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
+        public void Write(ref Vector3 value)
         {
             if (!_canWrite)
                 throw new NotSupportedException();
@@ -879,7 +1221,45 @@ namespace SharpDX
         /// A client must carefully not read/write above the size of this datastream.
         /// </remarks>
         /// <param name="value">The value.</param>
+        public void Write(ref Vector4 value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Vector4*)(_buffer + _position)) = value;
+                _position += 4 * 4;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
         public void Write(Color3 value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Color3*)(_buffer + _position)) = value;
+                _position += 4 * 3;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
+        public void Write(ref Color3 value)
         {
             if (!_canWrite)
                 throw new NotSupportedException();
@@ -917,6 +1297,25 @@ namespace SharpDX
         /// A client must carefully not read/write above the size of this datastream.
         /// </remarks>
         /// <param name="value">The value.</param>
+        public void Write(ref Color4 value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Color4*)(_buffer + _position)) = value;
+                _position += 4 * 4;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
         public void Write(Half value)
         {
             if (!_canWrite)
@@ -936,7 +1335,45 @@ namespace SharpDX
         /// A client must carefully not read/write above the size of this datastream.
         /// </remarks>
         /// <param name="value">The value.</param>
+        public void Write(ref Half value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Half*)(_buffer + _position)) = value;
+                _position += 2;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
         public void Write(Half2 value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Half2*)(_buffer + _position)) = value;
+                _position += 2 * 2;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
+        public void Write(ref Half2 value)
         {
             if (!_canWrite)
                 throw new NotSupportedException();
@@ -974,7 +1411,45 @@ namespace SharpDX
         /// A client must carefully not read/write above the size of this datastream.
         /// </remarks>
         /// <param name="value">The value.</param>
+        public void Write(ref Half3 value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Half3*)(_buffer + _position)) = value;
+                _position += 2 * 3;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
         public void Write(Half4 value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Half4*)(_buffer + _position)) = value;
+                _position += 2 * 4;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
+        public void Write(ref Half4 value)
         {
             if (!_canWrite)
                 throw new NotSupportedException();
@@ -1012,6 +1487,25 @@ namespace SharpDX
         /// A client must carefully not read/write above the size of this datastream.
         /// </remarks>
         /// <param name="value">The value.</param>
+        public void Write(ref Matrix value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Matrix*)(_buffer + _position)) = value;
+                _position += 4 * 4 * 4;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
         public void Write(Quaternion value)
         {
             if (!_canWrite)
@@ -1020,6 +1514,25 @@ namespace SharpDX
             {
                 *((Quaternion*)(_buffer + _position)) = value;
                 _position += 4 * 4 ;
+            }
+        }
+
+        /// <summary>
+        /// Writes the specified value.
+        /// </summary>
+        /// <remarks>
+        /// In order to provide faster read/write, this operation doesn't check stream bound. 
+        /// A client must carefully not read/write above the size of this datastream.
+        /// </remarks>
+        /// <param name="value">The value.</param>
+        public void Write(ref Quaternion value)
+        {
+            if (!_canWrite)
+                throw new NotSupportedException();
+            unsafe
+            {
+                *((Quaternion*)(_buffer + _position)) = value;
+                _position += 4 * 4;
             }
         }
 
