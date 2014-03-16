@@ -108,7 +108,7 @@ namespace SharpDX.Design
 
                 if (destinationType == typeof(InstanceDescriptor))
                 {
-                    var constructor = typeof(Matrix3x3).GetConstructor(MathUtil.Array(typeof(float), 16));
+                    var constructor = typeof(Matrix3x3).GetConstructor(new Type[9] { typeof(float), typeof(float), typeof(float), typeof(float), typeof(float), typeof(float), typeof(float), typeof(float), typeof(float) });
                     if (constructor != null)
                         return new InstanceDescriptor(constructor, Matrix3x3.ToArray());
                 }

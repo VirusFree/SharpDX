@@ -103,7 +103,7 @@ namespace SharpDX.Design
 
 			    if (destinationType == typeof(InstanceDescriptor))
 				{
-					var constructor = typeof(Color).GetConstructor(MathUtil.Array(typeof(byte), 4));
+                    var constructor = typeof(Color).GetConstructor(new Type[4] { typeof(float), typeof(float), typeof(float), typeof(float) });
 					if (constructor != null)
 						return new InstanceDescriptor(constructor, color.ToArray());
 				}

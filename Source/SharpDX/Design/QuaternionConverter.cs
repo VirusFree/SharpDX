@@ -101,7 +101,7 @@ namespace SharpDX.Design
 
                 if (destinationType == typeof(InstanceDescriptor))
                 {
-                    var constructor = typeof(Quaternion).GetConstructor(MathUtil.Array(typeof(float), 4));
+                    var constructor = typeof(Quaternion).GetConstructor(new Type[4] { typeof(float), typeof(float), typeof(float), typeof(float) });
                     if (constructor != null)
                         return new InstanceDescriptor(constructor, quaternion.ToArray());
                 }
