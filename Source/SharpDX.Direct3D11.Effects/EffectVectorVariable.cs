@@ -109,10 +109,26 @@ namespace SharpDX.Direct3D11
         /// <unmanaged>HRESULT ID3D11EffectVectorVariable::SetFloatVectorArray([In, Buffer] float* pData,[None] int Offset,[None] int Count)</unmanaged>
         public void Set<T>(T[] array) where T : struct
         {
+            Set(array, 0, array.Length);
+        }
+
+        /// <summary>
+        /// Set an array of four-component vectors that contain floating-point data.
+        /// </summary>
+        /// <typeparam name="T">Type of the four-component vector</typeparam>
+        /// <param name="array">A reference to the start of the data to set.</param>
+        /// <param name="offset">Start index in array</param>
+        /// <param name="count">Number of items to set</param>
+        /// <returns>
+        /// Returns one of the following {{Direct3D 10 Return Codes}}.
+        /// </returns>
+        /// <unmanaged>HRESULT ID3D11EffectVectorVariable::SetFloatVectorArray([In, Buffer] float* pData,[None] int Offset,[None] int Count)</unmanaged>
+        public void Set<T>(T[] array, int offset, int count) where T : struct
+        {
 #if !WIN8METRO
             Trace.Assert(Utilities.SizeOf<T>() == 16, VectorInvalidSize);
 #endif
-            Set(Interop.CastArray<Vector4,T>(array), 0, array.Length);
+            Set(Interop.CastArray<Vector4, T>(array), offset, count);
         }
 
         /// <summary>	
@@ -195,7 +211,7 @@ namespace SharpDX.Direct3D11
                 fixed (void* pArray = &array[0]) SetRawValue((IntPtr)pArray, 0, array.Length * Utilities.SizeOf<SharpDX.Color4>());
             }
         }
-      
+
         /// <summary>	
         /// Get an array of four-component vectors that contain integer data.	
         /// </summary>	
@@ -206,7 +222,7 @@ namespace SharpDX.Direct3D11
         {
             var temp = new Int4[count];
             GetIntVectorArray(temp, 0, count);
-            return temp;            
+            return temp;
         }
 
         /// <summary>	
@@ -219,7 +235,7 @@ namespace SharpDX.Direct3D11
         {
             var temp = new SharpDX.Vector4[count];
             GetFloatVectorArray(temp, 0, count);
-            return temp;            
+            return temp;
         }
 
         /// <summary>	
@@ -245,9 +261,9 @@ namespace SharpDX.Direct3D11
         public T[] GetVectorArray<T>(int count) where T : struct
         {
             var temp = new T[count];
-            GetIntVectorArray(Interop.CastArray<Int4,T>(temp), 0, count);
+            GetIntVectorArray(Interop.CastArray<Int4, T>(temp), 0, count);
             return temp;
-        }    
+        }
     }
 }
 #endif
