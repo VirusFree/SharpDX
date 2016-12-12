@@ -7,7 +7,7 @@
     <ProjectGuid>{BBB50A46-3291-4C62-B884-D1AB64F71EA5}</ProjectGuid>
     <RootNamespace>SharpDX.Direct3D11.Effects</RootNamespace>
     <AssemblyName>SharpDX.Direct3D11.Effects</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|DIRECTX11_2'">
@@ -63,18 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\External\Effects11\Bin\sharpdx_direct3d11_1_effects_arm.dll" Condition=" '$(SharpDXWin8)' == 'false'">
-      <Link>sharpdx_direct3d11_1_effects_arm.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\External\Effects11\Bin\sharpdx_direct3d11_1_effects_x64.dll" Condition=" '$(SharpDXWin8)' == 'false'">
-      <Link>sharpdx_direct3d11_1_effects_x64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\External\Effects11\Bin\sharpdx_direct3d11_1_effects_x86.dll" Condition=" '$(SharpDXWin8)' == 'false'">
-      <Link>sharpdx_direct3d11_1_effects_x86.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\..\External\Effects11\Bin\sharpdx_direct3d11_effects_x64.dll" Condition=" '$(SharpDXWin8)' == 'false'">
       <Link>sharpdx_direct3d11_effects_x64.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -16,8 +16,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <OutputType>Library</OutputType>
     <FileAlignment>512</FileAlignment>
-    
-    <!--Set defaults for all win8/directx11.1 features--> 
+
+    <!--Set defaults for all win8/directx11.1 features-->
     <SharpDXWin8Core>false</SharpDXWin8Core>
     <SharpDXWin8>false</SharpDXWin8>
     <SharpDXWP8>false</SharpDXWP8>
@@ -31,27 +31,27 @@
     <!-- Save the Platform, as we are overriding it in SharpDXForcePlatform  -->
     <ProjectPlatform>$(Platform)</ProjectPlatform>
   </PropertyGroup>
-  
+
   <!--
   *************************************************************************************************************
   Configurations for .NET Frameworks
   *************************************************************************************************************
   -->
-  
+
   <!--.NET 2.0 - Desktop-->
   <PropertyGroup Condition=" '$(Platform)' == 'Net20'">
     <SharpDXPlatform>net20</SharpDXPlatform>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <TargetFrameworkProfile></TargetFrameworkProfile>
   </PropertyGroup>
-  
+
   <!--.NET 4.0 - Desktop-->
   <PropertyGroup Condition=" '$(Platform)' == 'Net40'">
     <SharpDXPlatform>net40</SharpDXPlatform>
-    <TargetFrameworkVersion>v4.5.1.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
-  
+
   <!--.NET Windows Phone - DirectX11.1 - Windows Phone 8-->
   <PropertyGroup Condition=" '$(Platform)' == 'WP8-x86'">
     <SharpDXAssemblyType>DirectX11_1</SharpDXAssemblyType>
@@ -62,7 +62,7 @@
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
-    <SilverlightApplication>false</SilverlightApplication>    
+    <SilverlightApplication>false</SilverlightApplication>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Platform)' == 'WP8-ARM'">
@@ -89,17 +89,17 @@
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
   </PropertyGroup>
-  
+
   <!--.NET 4.0 - DirectX11.2 - Windows 8 Desktop-->
   <PropertyGroup Condition=" '$(Platform)' == 'DIRECTX11_2'">
     <SharpDXAssemblyType>DirectX11_2</SharpDXAssemblyType>
     <SharpDXPlatform>net40</SharpDXPlatform>
     <DirectX11_1>true</DirectX11_1>
     <DirectX11_2>true</DirectX11_2>
-    <TargetFrameworkVersion>v4.5.1.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
-  
+
   <!--.NET 4.5 - DirectX11.2 - Windows 8 Metro-->
   <PropertyGroup Condition=" '$(Platform)' == 'Win8'">
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
@@ -110,7 +110,7 @@
     <DirectX11_1>true</DirectX11_1>
     <DirectX11_2>true</DirectX11_2>
   </PropertyGroup>
-  
+
   <!--<Import Condition="'$(SharpDXWP8)' != 'false'"  Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />-->
   <PropertyGroup>
     <SharpDXAssemblyType Condition=" '$(SharpDXSign)' == 'true'">$(SharpDXAssemblyType)-Signed</SharpDXAssemblyType>

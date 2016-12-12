@@ -36,6 +36,6 @@ namespace SharpDX.Direct3D11
             fixed (void* ptr = effectByteCode)
                 D3DX11Effects.CreateEffectFromMemory((IntPtr)ptr, effectByteCode.Length, (int)fxFlags, device, this);
         }
-   }
+    }
 }
 #endif

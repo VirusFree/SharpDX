@@ -40,7 +40,6 @@ namespace SharpDX.Direct3D11
             return swapChain.GetBackBuffer<T>(index);
         }
 
-#if !DIRECTX11_1
         /// <summary>
         ///   Loads a texture from an image file.
         /// </summary>
@@ -491,8 +490,8 @@ namespace SharpDX.Direct3D11
         public static void ToStream<T>(DeviceContext context, T texture, ImageFileFormat format, Stream stream)
             where T : Resource
         {
-            System.Diagnostics.Debug.Assert(typeof (T) == typeof (Texture1D) || typeof (T) == typeof (Texture2D) ||
-                         typeof (T) == typeof (Texture3D));
+            System.Diagnostics.Debug.Assert(typeof(T) == typeof(Texture1D) || typeof(T) == typeof(Texture2D) ||
+                         typeof(T) == typeof(Texture3D));
 
             Blob blob;
             D3DX11.SaveTextureToMemory(context, texture, format, out blob, 0);
@@ -506,7 +505,7 @@ namespace SharpDX.Direct3D11
 
             blob.Dispose();
         }
-#endif
+
 
         /// <summary>
         /// Calculates the sub resource index from a miplevel.
