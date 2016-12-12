@@ -1234,6 +1234,26 @@ HRESULT SConstantBuffer::CheckAndUpdate(ID3D11DeviceContext *pContext)
 	return S_OK;
 }
 
+HRESULT SConstantBuffer::MakeProxy(ID3DX11EffectConstantBuffer *TargetCB)
+{
+	//keep target cb and set flag
+	ProxyTargetCB = TargetCB;
+	IsProxy = TRUE;
+
+	//set..
+	return SetConstantBuffer(((struct SConstantBuffer *)TargetCB)->pD3DObject);
+}
+
+HRESULT SConstantBuffer::StopProxy()
+{
+	//restore
+	ProxyTargetCB = NULL;
+	IsProxy = FALSE;
+
+	//set..
+	return UndoSetConstantBuffer();
+}
+
 HRESULT SConstantBuffer::GetConstantBuffer(_Outptr_ ID3D11Buffer **ppConstantBuffer)
 {
     HRESULT hr = S_OK;

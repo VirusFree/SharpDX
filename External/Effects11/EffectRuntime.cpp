@@ -139,7 +139,17 @@ BOOL SPassBlock::CheckDependencies()
 // Update constant buffer contents if necessary
 inline void CheckAndUpdateCB_FX(ID3D11DeviceContext *pContext, SConstantBuffer *pCB)
 {
-    if (pCB->IsDirty && !pCB->IsNonUpdatable)
+	//get target
+	struct SConstantBuffer *target = (struct SConstantBuffer*)pCB->ProxyTargetCB;
+
+	//update
+	if (pCB->IsProxy && target->IsDirty && !target->IsNonUpdatable)
+	{
+		// Target CB out of date; rebuild it
+		pContext->UpdateSubresource(target->pD3DObject, 0, NULL, target->pBackingStore, target->Size, target->Size);
+		target->IsDirty = FALSE;
+	}
+	else if (pCB->IsDirty && !pCB->IsNonUpdatable)
     {
         // CB out of date; rebuild it
         pContext->UpdateSubresource(pCB->pD3DObject, 0, nullptr, pCB->pBackingStore, pCB->Size, pCB->Size);

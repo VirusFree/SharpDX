@@ -326,7 +326,9 @@ public:
     STDMETHOD(GetConstantBuffer)(_Outptr_ ID3D11Buffer **ppConstantBuffer) override { UNREFERENCED_PARAMETER(ppConstantBuffer); return E_FAIL; }
     STDMETHOD(UndoSetConstantBuffer)() override { return E_FAIL; }
 
-	STDMETHOD(CheckAndUpdate)(ID3D11DeviceContext *pContext) { return E_FAIL; }
+	STDMETHOD(CheckAndUpdate)(ID3D11DeviceContext *pContext) { UNREFERENCED_PARAMETER(pContext); return E_FAIL; }
+	STDMETHOD(MakeProxy)(ID3DX11EffectConstantBuffer *TargetCB) { UNREFERENCED_PARAMETER(TargetCB); return E_FAIL; }
+	STDMETHOD(StopProxy)() { return E_FAIL; }
 
     STDMETHOD(SetTextureBuffer)(_In_ ID3D11ShaderResourceView *pTextureBuffer) override { UNREFERENCED_PARAMETER(pTextureBuffer); return E_FAIL; }
     STDMETHOD(GetTextureBuffer)(_Outptr_ ID3D11ShaderResourceView **ppTextureBuffer) override { UNREFERENCED_PARAMETER(ppTextureBuffer); return E_FAIL; }

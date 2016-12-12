@@ -63,14 +63,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\External\Effects11\Bin\sharpdx_direct3d11_effects_x64.dll" Condition=" '$(SharpDXWin8)' == 'false'">
-      <Link>sharpdx_direct3d11_effects_x64.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\External\Effects11\Bin\sharpdx_direct3d11_effects_x86.dll" Condition=" '$(SharpDXWin8)' == 'false'">
-      <Link>sharpdx_direct3d11_effects_x86.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="Documentation\CodeComments.xml" />
     <None Include="Mapping.xml">
       <SubType>Designer</SubType>
@@ -100,6 +92,16 @@
       <Name>SharpDX</Name>
       <Private>False</Private>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\External\Effects11\Bin\sharpdx_direct3d11_1_effects_x64.dll">
+      <Link>sharpdx_direct3d11_1_effects_x64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\..\External\Effects11\Bin\sharpdx_direct3d11_1_effects_x86.dll">
+      <Link>sharpdx_direct3d11_1_effects_x86.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(SolutionDir)\Build\SharpDX.PostSettings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

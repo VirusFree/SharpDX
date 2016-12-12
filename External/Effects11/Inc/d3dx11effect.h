@@ -647,6 +647,8 @@ DECLARE_INTERFACE_(ID3DX11EffectConstantBuffer, ID3DX11EffectVariable)
     STDMETHOD(GetConstantBuffer)(THIS_ _Outptr_ ID3D11Buffer **ppConstantBuffer) PURE;
     
 	STDMETHOD(CheckAndUpdate)(THIS_ ID3D11DeviceContext *pContext) PURE;
+	STDMETHOD(MakeProxy)(THIS_ ID3DX11EffectConstantBuffer *TargetCB) PURE;
+	STDMETHOD(StopProxy)(THIS) PURE;
 
     STDMETHOD(SetTextureBuffer)(THIS_ _In_ ID3D11ShaderResourceView *pTextureBuffer) PURE;
     STDMETHOD(UndoSetTextureBuffer)(THIS) PURE;

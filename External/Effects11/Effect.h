@@ -811,6 +811,9 @@ struct SConstantBuffer : public TUncastableVariable<ID3DX11EffectConstantBuffer>
     BOOL                    IsSingle:1;         // Set to true if you want to share this CB with cloned Effects
     BOOL                    IsNonUpdatable:1;   // Set to true if you want to share this CB with cloned Effects
 
+	ID3DX11EffectConstantBuffer			*ProxyTargetCB;
+	BOOL                    			IsProxy : 1;
+
     union
     {
         // These are used to store the original ID3D11Buffer* for use in UndoSetConstantBuffer
@@ -841,6 +844,8 @@ struct SConstantBuffer : public TUncastableVariable<ID3DX11EffectConstantBuffer>
         IsSingle = false;
         IsNonUpdatable = false;
         pEffect = nullptr;
+		ProxyTargetCB = NULL;
+		IsProxy = FALSE;
     }
 
     BOOL ClonedSingle() const;
@@ -876,6 +881,8 @@ struct SConstantBuffer : public TUncastableVariable<ID3DX11EffectConstantBuffer>
     STDMETHOD(UndoSetTextureBuffer)() override;
 
 	STDMETHOD(CheckAndUpdate)(ID3D11DeviceContext *pContext);
+	STDMETHOD(MakeProxy)(ID3DX11EffectConstantBuffer *TargetCB);
+	STDMETHOD(StopProxy)();
 
     // ID3DX11EffectType interface
     STDMETHOD(GetDesc)(_Out_ D3DX11_EFFECT_TYPE_DESC *pDesc) override;
