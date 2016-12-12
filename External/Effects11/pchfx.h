@@ -1,70 +1,62 @@
-//////////////////////////////////////////////////////////////////////////////
+//--------------------------------------------------------------------------------------
+// File: pchfx.h
 //
-//  Copyright (C) Microsoft Corporation.  All Rights Reserved.
+// Direct3D 11 shader effects precompiled header
 //
-//  File:       pchfx.h
-//  Content:    D3D shader effects precompiled header
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+// ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+// THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+// PARTICULAR PURPOSE.
 //
-//////////////////////////////////////////////////////////////////////////////
+// Copyright (c) Microsoft Corporation. All rights reserved.
+//
+// http://go.microsoft.com/fwlink/p/?LinkId=271568
+//--------------------------------------------------------------------------------------
 
-#ifndef __D3DX11_PCHFX_H__
-#define __D3DX11_PCHFX_H__
+#pragma once
 
-#define D3DX11_DEFAULT            ((UINT) -1)
-#define D3DX11_FROM_FILE          ((UINT) -3)
-#define DXGI_FORMAT_FROM_FILE     ((DXGI_FORMAT) -3)
+#pragma warning(disable : 4102 4127 4201 4505 4616 4706 6326)
 
-#ifndef D3DX11INLINE
-#ifdef _MSC_VER
-  #if (_MSC_VER >= 1200)
-  #define D3DX11INLINE __forceinline
-  #else
-  #define D3DX11INLINE __inline
-  #endif
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
+#include <algorithm>
+
+#if defined(_XBOX_ONE) && defined(_TITLE)
+#include <d3d11_x.h>
+#include <D3DCompiler_x.h>
+#define DCOMMON_H_INCLUDED
+#define NO_D3D11_DEBUG_NAME
+#elif (_WIN32_WINNT >= 0x0602) || defined(_WIN7_PLATFORM_UPDATE) 
+#include <d3d11_1.h>
+#include <D3DCompiler.h>
 #else
-  #ifdef __cplusplus
-  #define D3DX11INLINE inline
-  #else
-  #define D3DX11INLINE
-  #endif
-#endif
+#include <d3d11.h>
+#include <D3DCompiler.h>
 #endif
 
-#define _FACD3D  0x876
-#define MAKE_D3DHRESULT( code )  MAKE_HRESULT( 1, _FACD3D, code )
-#define MAKE_D3DSTATUS( code )  MAKE_HRESULT( 0, _FACD3D, code )
+#ifndef _WIN32_WINNT_WIN8
+#define _WIN32_WINNT_WIN8 0x0602
+#endif
 
-#define D3DERR_INVALIDCALL                      MAKE_D3DHRESULT(2156)
-#define D3DERR_WASSTILLDRAWING                  MAKE_D3DHRESULT(540)
-#include <float.h>
-
-#include "d3d11.h"
-//#include "d3dx11.h"
 #undef DEFINE_GUID
 #include "INITGUID.h"
+
 #include "d3dx11effect.h"
 
 #define UNUSED -1
 
 //////////////////////////////////////////////////////////////////////////
 
-#define offsetof_fx( a, b ) (UINT)offsetof( a, b )
+#define offsetof_fx( a, b ) (uint32_t)offsetof( a, b )
 
 #include "d3dxGlobal.h"
 
 #include <stddef.h>
-#include <strsafe.h>
+#include <stdlib.h>
 
 #include "Effect.h"
 #include "EffectStateBase11.h"
 #include "EffectLoad.h"
 
-#include "D3DCompiler.h"
-
-//////////////////////////////////////////////////////////////////////////
-
-namespace D3DX11Effects
-{
-} // end namespace D3DX11Effects
-
-#endif // __D3DX11_PCHFX_H__
