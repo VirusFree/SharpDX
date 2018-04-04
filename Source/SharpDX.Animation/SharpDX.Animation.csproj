@@ -7,7 +7,7 @@
     <ProjectGuid>{874DEC63-9AB9-4A09-B1EA-E8FB1F1B68A1}</ProjectGuid>
     <RootNamespace>SharpDX.Animation</RootNamespace>
     <AssemblyName>SharpDX.Animation</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|DIRECTX11_2'">

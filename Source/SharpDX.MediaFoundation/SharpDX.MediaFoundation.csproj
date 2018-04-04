@@ -7,7 +7,7 @@
     <ProjectGuid>{CA21A201-078B-4EBE-A2AB-C3B1FFEC99F9}</ProjectGuid>
     <RootNamespace>SharpDX.MediaFoundation</RootNamespace>
     <AssemblyName>SharpDX.MediaFoundation</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|DIRECTX11_2'">

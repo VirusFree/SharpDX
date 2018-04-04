@@ -20,7 +20,7 @@ It adds automatically references to SharpDX assemblies
 
     <!-- Detect the .NET Framework -->
     <SharpDXNETFramework Condition="'$(SharpDXNETFramework)' == '' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and ('$(TargetFrameworkVersion)' == 'v2.0' or '$(TargetFrameworkVersion)' == 'v3.5') ">net20</SharpDXNETFramework>
-    <SharpDXNETFramework Condition="'$(SharpDXNETFramework)' == '' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and $(TargetFrameworkVersion.Contains('v4.6'))">net46</SharpDXNETFramework>
+    <SharpDXNETFramework Condition="'$(SharpDXNETFramework)' == '' and '$(TargetFrameworkIdentifier)' == '.NETFramework' and $(TargetFrameworkVersion.Contains('v4.7'))">net46</SharpDXNETFramework>
     <SharpDXNETFramework Condition="'$(SharpDXNETFramework)' == '' and '$(TargetFrameworkIdentifier)' == '.NETCore'">winrt</SharpDXNETFramework>
     <SharpDXNETFramework Condition="'$(SharpDXNETFramework)' == '' and '$(TargetFrameworkProfile)' == 'Profile32'">winrt</SharpDXNETFramework>
     <SharpDXNETFramework Condition="'$(SharpDXNETFramework)' == '' and '$(TargetFrameworkIdentifier)' == 'WindowsPhone' and $(TargetFrameworkVersion.Contains('v8')) and '$(Platform)' != 'ARM'">wp8-x86</SharpDXNETFramework>
