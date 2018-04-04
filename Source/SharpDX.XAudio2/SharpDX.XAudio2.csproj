@@ -7,6 +7,8 @@
     <ProjectGuid>{4995127E-0B8E-45B8-80C4-6BAC1BBE3783}</ProjectGuid>
     <RootNamespace>SharpDX.XAudio2</RootNamespace>
     <AssemblyName>SharpDX.XAudio2</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <ItemGroup Condition=" '$(SharpDXWin8Core)' == 'false'">
     <Reference Include="System" />

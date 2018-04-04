@@ -7,7 +7,7 @@
     <ProjectGuid>{4939860C-5D5B-4D56-89C8-1980A9EBB392}</ProjectGuid>
     <RootNamespace>SharpDX.XACT3</RootNamespace>
     <AssemblyName>SharpDX.XACT3</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|DIRECTX11_2'">

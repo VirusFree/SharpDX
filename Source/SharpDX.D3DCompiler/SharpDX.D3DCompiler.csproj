@@ -7,7 +7,7 @@
     <ProjectGuid>{361D3F81-A48A-47F2-80DF-CA4F9536CB4E}</ProjectGuid>
     <RootNamespace>SharpDX.D3DCompiler</RootNamespace>
     <AssemblyName>SharpDX.D3DCompiler</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|DIRECTX11_2'">

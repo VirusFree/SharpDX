@@ -48,7 +48,7 @@
   <!--.NET 4.0 - Desktop-->
   <PropertyGroup Condition=" '$(Platform)' == 'Net40'">
     <SharpDXPlatform>net40</SharpDXPlatform>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
 
@@ -96,7 +96,7 @@
     <SharpDXPlatform>net40</SharpDXPlatform>
     <DirectX11_1>true</DirectX11_1>
     <DirectX11_2>true</DirectX11_2>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
 

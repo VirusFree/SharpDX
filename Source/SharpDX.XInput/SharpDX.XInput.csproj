@@ -7,7 +7,7 @@
     <ProjectGuid>{764D7CE5-F78B-432E-A849-E40BA44522D6}</ProjectGuid>
     <RootNamespace>SharpDX.XInput</RootNamespace>
     <AssemblyName>SharpDX.XInput</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|DIRECTX11_2'">
